@@ -1,9 +1,11 @@
 import {
   AmbientLight,
   BoxGeometry,
+  Color,
   DirectionalLight,
   DodecahedronBufferGeometry,
   Mesh,
+  MeshLambertMaterial,
   MeshNormalMaterial,
   MeshToonMaterial,
   PerspectiveCamera,
@@ -12,6 +14,7 @@ import {
 } from 'three'
 import React, { useEffect, useRef } from 'react'
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls'
+import { totesRando } from '.'
 
 interface sourceState {
   width: number
@@ -54,7 +57,8 @@ export const App: React.FC = () => {
 
     // CAMERA
     camera = new PerspectiveCamera(70, width / height, 1, 1000)
-    camera.position.z = 100
+    camera.position.z = 200
+    camera.position.y = 150
 
     // CONTROLS
     controls = new TrackballControls(camera, renderer.domElement)
@@ -88,15 +92,27 @@ export const App: React.FC = () => {
   }
 
   const addShapes = () => {
-    // const geometry = new BoxGeometry(10, 10, 10)
-    // const material = new MeshNormalMaterial()
-    // const mesh = new Mesh(geometry, material)
-    // scene?.add(mesh)
-
-    const geo2 = new DodecahedronBufferGeometry(10, 1)
-    const material2 = new MeshToonMaterial({ color: 0x663399 })
-    const mesh2 = new Mesh(geo2, material2)
-    scene?.add(mesh2)
+    if (scene) {
+      const num = 20
+      const distance = 10
+      const offset = 300
+      for (let i = 0; i < num; i++) {
+        for (let j = 0; j < num; j++) {
+          const geometry = new BoxGeometry(10, totesRando(50, 150), 10)
+          const color = new Color(`hsl(${totesRando(180, 210)},100%,50%)`)
+          const material = new MeshLambertMaterial({ color })
+          const mesh = new Mesh(geometry, material)
+          mesh.position.x = distance * i - 100
+          mesh.position.z = distance * j - 100
+          scene.add(mesh)
+        }
+      }
+      // BALL
+      // const geo2 = new DodecahedronBufferGeometry(10, 1)
+      // const material2 = new MeshToonMaterial({ color: 0x663399 })
+      // const mesh2 = new Mesh(geo2, material2)
+      // scene?.add(mesh2)
+    }
   }
 
   const onWindowResize = () => {
