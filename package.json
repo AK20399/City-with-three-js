@@ -1,6 +1,10 @@
 {
   "name": "city-with-three-js",
   "version": "0.1.0",
+  "author": {
+    "name": "Aakash Darji",
+    "email": "aakash.darji20@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -23,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts --ext .tsx --max-warnings=0 --fix",
-    "format": "prettier --write"
+    "format": "prettier --write 'src/*'"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/three": "^0.133.1",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
     "eslint-config-prettier": "^8.3.0",
