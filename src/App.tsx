@@ -98,7 +98,8 @@ export const App: React.FC = () => {
       const offset = 300
       for (let i = 0; i < num; i++) {
         for (let j = 0; j < num; j++) {
-          const geometry = new BoxGeometry(10, totesRando(50, 150), 10)
+          const randomValue = totesRando(50, 150)
+          const geometry = new BoxGeometry(10, randomValue, 10)
           const color = new Color(`hsl(${totesRando(180, 210)},100%,50%)`)
           const material = new MeshLambertMaterial({ color })
           const mesh = new Mesh(geometry, material)
@@ -108,10 +109,12 @@ export const App: React.FC = () => {
         }
       }
       // BALL
-      // const geo2 = new DodecahedronBufferGeometry(10, 1)
-      // const material2 = new MeshToonMaterial({ color: 0x663399 })
-      // const mesh2 = new Mesh(geo2, material2)
-      // scene?.add(mesh2)
+      const geo2 = new DodecahedronBufferGeometry(10, 1)
+      const material2 = new MeshToonMaterial({ color: 0xffff00 })
+      const mesh2 = new Mesh(geo2, material2)
+      mesh2.position.y = 120
+      mesh2.position.z = -100
+      scene?.add(mesh2)
     }
   }
 
