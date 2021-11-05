@@ -67,7 +67,7 @@ export const App: React.FC = () => {
     // LIGHTS
     const light1 = new AmbientLight(0xffffff, 0.5)
     const light2 = new DirectionalLight(0xffffff)
-    light2.position.set(1, 1, 1)
+    light2.position.set(10, 120, 1)
 
     // FINAL
     scene.add(light1)
