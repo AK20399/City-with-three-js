@@ -2,8 +2,10 @@ import {
   AmbientLight,
   BoxGeometry,
   DirectionalLight,
+  DodecahedronBufferGeometry,
   Mesh,
   MeshNormalMaterial,
+  MeshToonMaterial,
   PerspectiveCamera,
   Scene,
   WebGL1Renderer,
@@ -86,10 +88,15 @@ export const App: React.FC = () => {
   }
 
   const addShapes = () => {
-    const geometry = new BoxGeometry(10, 10, 10)
-    const material = new MeshNormalMaterial()
-    const mesh = new Mesh(geometry, material)
-    scene?.add(mesh)
+    // const geometry = new BoxGeometry(10, 10, 10)
+    // const material = new MeshNormalMaterial()
+    // const mesh = new Mesh(geometry, material)
+    // scene?.add(mesh)
+
+    const geo2 = new DodecahedronBufferGeometry(10, 1)
+    const material2 = new MeshToonMaterial({ color: 0x663399 })
+    const mesh2 = new Mesh(geo2, material2)
+    scene?.add(mesh2)
   }
 
   const onWindowResize = () => {
