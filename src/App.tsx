@@ -38,6 +38,7 @@ export const App: React.FC = () => {
     controls: undefined,
     scene: undefined,
   })
+  // test
 
   useEffect(() => {
     width = window.innerWidth
