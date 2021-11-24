@@ -6,7 +6,6 @@ import {
   DodecahedronBufferGeometry,
   Mesh,
   MeshLambertMaterial,
-  MeshNormalMaterial,
   MeshToonMaterial,
   PerspectiveCamera,
   Scene,
@@ -14,7 +13,7 @@ import {
 } from 'three'
 import React, { useEffect, useRef } from 'react'
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls'
-import { totesRando } from '.'
+import { totesRando } from './helpers'
 
 interface sourceState {
   width: number
@@ -27,6 +26,7 @@ interface sourceState {
 
 export const App: React.FC = () => {
   // const SELF = useSource()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>(undefined)
   let {
     current: { camera, controls, height, renderer, scene, width },
@@ -38,6 +38,7 @@ export const App: React.FC = () => {
     controls: undefined,
     scene: undefined,
   })
+  // test
 
   useEffect(() => {
     width = window.innerWidth
@@ -95,7 +96,6 @@ export const App: React.FC = () => {
     if (scene) {
       const num = 20
       const distance = 10
-      const offset = 300
       for (let i = 0; i < num; i++) {
         for (let j = 0; j < num; j++) {
           const randomValue = totesRando(50, 100)
